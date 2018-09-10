@@ -22,7 +22,7 @@ function objToSql(ob) {
 }
 
 var orm = {
-  selectAll: function(tableInput, cb) {
+  all: function(tableInput, cb) {
     var queryString = "SELECT * FROM " + tableInput + ";";
     connection.query(queryString, function(err, result) {
       if (err) {
@@ -33,7 +33,7 @@ var orm = {
   },
   // vals is an array of values that we want to save to cols
   // cols are the columns we want to insert the values into
-  insertOne: function(table, cols, vals, cb) {
+  create: function(table, cols, vals, cb) {
     var queryString = "INSERT INTO " + table;
 
     queryString += " (";
@@ -54,7 +54,7 @@ var orm = {
   },
   // objColVals would be the columns and values that you want to update
   // an example of objColVals would be {name: panther, sleepy: true}
-  updateOne: function(table, objColVals, condition, cb) {
+  update: function(table, objColVals, condition, cb) {
     var queryString = "UPDATE " + table;
 
     queryString += " SET ";
